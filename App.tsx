@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import MainScreen from './screens/mainScreen'
+import HistoryScreen from './screens/historyScreen'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export type RootStackParamList = {
+  Main: undefined
+  History: undefined
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator<RootStackParamList>()
+
+const navTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#5A67D8',
+    card: '#5A67D8',
+    text: '#FFFFFF',
+    background: '#5A67D8',
+    border: '#5A67D8'
+  }
+}
+
+export default function App() {
+  
+  return (
+    <NavigationContainer theme={navTheme}>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Main'
+          component={MainScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='History'
+          component={HistoryScreen}
+          options={{
+            title: 'History',
+            headerTintColor: '#FFFFFF',
+            headerStyle: { backgroundColor: '#5A67D8' },
+            headerTitleStyle: { color: '#FFFFFF' }
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
