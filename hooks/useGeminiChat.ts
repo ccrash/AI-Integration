@@ -53,7 +53,7 @@ export function useGeminiChat(options: UseGeminiChatOptions = {}): UseGeminiChat
   const [error, setError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
 
-  const apiKey = apiKeyProp ?? process.env?.EXPO_PUBLIC_GEMINI_API_KEY ?? ''
+  const apiKey = apiKeyProp ?? process.env?.GEMINI_API_KEY ?? ''
   const apiUrl = useMemo(
     () => `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`,
     [modelName, apiKey]
