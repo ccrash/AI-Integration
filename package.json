@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "clean": "yarn start --reset-cache",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",
     "fix": "expo install --fix"
